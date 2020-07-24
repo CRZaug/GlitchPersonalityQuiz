@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Who are you?</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+    <!--   Scripts   -->
+    <script src="/script.js" defer></script>
+
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
+    ></script>
+
+    <!--  FONTS    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;500&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <h1 id="title">Who are you and what do you stand for?</h1>
+
+    <br />
+    <br />
+
+    <div class="Intro">
+      <div class="text">
+        <h4>
+          You don't need us to tell you that we are living through uncertain
+          times. You probably feel confused. Unsure. Lost.
+        </h4>
+      </div>
+
+      <br />
+
+      <div>
+        <h2 class="standout">
+          YOU ARE NOT ALONE.
+        </h2>
+      </div>
+
+      <br />
+
+      <div class="text">
+        <h5>
+          We recognize that many people right now are facing crises of identity.
+          After all, we are slogging through coronavirus-induced lifestyle
+          changes reaching every corner of normality, uprooting every trace
+          of familiarity. You may even feel like you don't know yourself anymore.
+
+          <br />
+          <br />
+          This why we created our novel science-based personality test: to help
+          YOU get in touch with your true self. Based on the work of Baggs et
+          al. (2020), this test uses modern psychological tools to help you
+          uncover the hidden truths of who you are and what you truly stand for.
+        </h5>
+      </div>
+
+      <br />
+
+      <div>
+        <h2 class="standout">
+          Are you ready to find out who you really are?
+        </h2>
+      </div>
+
+      <br />
+      <button id="takequiz">
+        START TEST
+      </button>
+    </div>
+
+    <br />
+
+    <div id="quizAll">
+      <div id="quizBody">
+        <div>
+          <h2>
+            What is your favorite color?
+          </h2>
+        </div>
+
+        <div class="question" id="q1">
+          <br />
+          <div>
+            <button id="q1a2">
+              <img
+                src="https://ae01.alicdn.com/kf/HTB1SRe0NVXXXXclaXXXq6xXFXXXj/Akexiya-New-spring-autumn-ankle-boots-heels-pink-shoes-women-casual-shoes-height-increased-high-top.jpg"
+                alt="Pink shoes"
+              />
+              <p>
+                Pink
+              </p>
+            </button>
+          </div>
+          <div>
+            <button id="q1a1">
+              <img
+                src="data:image/jpeg;base64,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"
+                alt="Red paint"
+              />
+              <p>
+                Red
+              </p>
+            </button>
+          </div>
+          <div>
+            <button id="q1a3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/1/13/Green_Grass.JPG"
+                alt="Green grass"
+              />
+              <p>Green</p>
+            </button>
+          </div>
+          <div>
+            <button id="q1a4">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/0/03/Mountain_Bluebird.jpg"
+                alt="Blue bird"
+              />
+
+              <p>
+                Blue
+              </p>
+            </button>
+          </div>
+          <br />
+        </div>
+
+        <div>
+          <br />
+          <br />
+          <h2>
+            What is your favorite season?
+          </h2>
+        </div>
+
+        <div class="question" id="q2">
+          <br />
+          <div>
+            <br />
+            <button id="q2a4">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/7/72/Snow_Scene_at_Shipka_Pass_1.JPG"
+                alt="Winter"
+              />
+              <p>
+                Winter
+              </p>
+            </button>
+          </div>
+          <div>
+            <!--      img    -->
+            <br />
+            <button id="q2a3">
+              <img
+                src="https://cdn.pixabay.com/photo/2016/02/13/10/35/spring-awakening-1197602_960_720.jpg"
+                alt="Spring"
+              />
+
+              <p>
+                Spring
+              </p>
+            </button>
+          </div>
+          <div>
+            <!--      img    -->
+            <br />
+            <button id="q2a2">
+              <img
+                src="https://live.staticflickr.com/6090/6086519585_59a875090b_b.jpg"
+                alt="Fall"
+              />
+              <p>
+                Fall
+              </p>
+            </button>
+          </div>
+          <div>
+            <!--      img    -->
+            <br />
+            <button id="q2a1">
+              <img
+                src="https://live.staticflickr.com/3857/15294246926_7766885f5c_b.jpg"
+                alt="Summer"
+              />
+              <p>
+                Summer
+              </p>
+            </button>
+          </div>
+          <br />
+        </div>
+
+        <div>
+          <br />
+          <br />
+          <h2>
+            What is your favorite food?
+          </h2>
+        </div>
+
+        <div class="question" id="q3">
+          <br />
+          <div>
+            <!--      img    -->
+            <br />
+            <button id="q3a1">
+              <img
+                src="https://p0.pikrepo.com/preview/257/764/pizza-with-cheese-and-green-leaves.jpg"
+                alt="Pizza"
+              />
+              <p>
+                Pizza
+              </p>
+            </button>
+          </div>
+          <div>
+            <!--      img    -->
+            <br />
+            <button id="q3a2">
+              <img
+                src="https://www.publicdomainpictures.net/pictures/180000/velka/ice-cream-berry-isolated.jpg"
+                alt="Ice cream"
+              />
+              <p>
+                Ice cream
+              </p>
+            </button>
+          </div>
+          <div>
+            <!--      img    -->
+            <br />
+            <button id="q3a4">
+              <img
+                src="https://live.staticflickr.com/7803/44681824170_8798eafd4c_b.jpg"
+                alt="Sushi"
+              />
+              <p>
+                Sushi
+              </p>
+            </button>
+          </div>
+          <div>
+            <!--      img    -->
+            <br />
+            <button id="q3a3">
+              <img
+                src="https://www.publicdomainpictures.net/pictures/70000/velka/cooked-fresh-spaghetti-1389122074pCK.jpg"
+                alt="Spaghetti"
+              />
+              <p>
+                Spaghetti
+              </p>
+            </button>
+          </div>
+          <br />
+        </div>
+      </div>
+
+      <div class="container">
+
+          <br />
+          <br />
+          <br />
+          <h2 id="result"></h2>
+          <h4 id="resultText"></h4>
+          <div id="imageGoesHere"></div>
+          
+          <div>
+            <button id="restart">
+              Try again?
+            </button>
+          </div>
+          
+
+      </div>
+    </div>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:25px;right:0px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
+  </body>
+</html>
