@@ -1,5 +1,6 @@
 var questionCount = 0;
 var questionScores = [0, 0, 0, 0]; // 4 Possible results
+
 var correspondingResultsNames = [
   "Beyoncé",
   "Elvis Presley",
@@ -26,6 +27,12 @@ var resultText = document.getElementById("resultText");
 var imgR = document.createElement("img");
 var restart = document.getElementById("restart");
 
+// Take quiz button
+var takequiz = document.getElementById("takequiz");
+
+// Add event listners for taking the quiz
+takequiz.addEventListener("click",startQuiz);
+
 // Add in event listeners for the questions
 for (let i = 1; i <= 3; i++) {
   for (let j = 1; j <= 4; j++) {
@@ -38,6 +45,12 @@ for (let i = 1; i <= 3; i++) {
 
 // Add an event listener for the restart button
 restart.addEventListener("click", restartQuiz);
+
+
+function startQuiz(){
+  document.getElementById("quizAll").scrollIntoView({ block: "start", behavior: "smooth" });
+  console.log("worked")
+}
 
 // Update score function
 function updateScore(evt) {
@@ -56,12 +69,16 @@ function updateScore(evt) {
 
   if (questionCount != 3) {
     console.log("q" + (i + j));
+    document
+      .getElementById("qtext" + (i+1))
+      .scrollIntoView({ block: "start", behavior: "smooth" });
   } else {
     updateResult();
   }
 }
 
 function updateResult() {
+
   let winner = Math.max.apply(Math, questionScores);
   console.log(winner);
 
@@ -74,14 +91,21 @@ function updateResult() {
       "Wow, not even we know who you are. Not even science can help you. You are truly hopeless.";
   } else {
     result.innerHTML = correspondingResultsNames[index];
-
     imgR.src = correspondingResultsImage[index];
-    imgR.width = "300";
+    imgR.height = "150";
+    
     document.getElementById("imageGoesHere").appendChild(imgR);
     resultText.innerHTML = correspondingResultsPara[index];
   }
-
+  
+  result.style.visibility = "visible";
   restart.style.visibility = "visible";
+  
+//   A slight delay so the scrolling moves to the right place
+  setTimeout(function(){
+  document.getElementById("result").scrollIntoView({ block: "start", behavior: "smooth" });
+    }, 50)  
+ 
 }
 
 // Reset everything that needs to be reset and go back to top
@@ -92,17 +116,17 @@ function restartQuiz() {
       all.disabled = false;
       all.style.opacity = "100%";
       result.innerHTML = "";
+      result.style.visibility = "hidden";
       resultText.innerHTML = "";
       restart.style.visibility = "hidden";
-      
+
       questionCount = 0;
       questionScores = [0, 0, 0, 0];
-      
+
       document
         .getElementById("quizAll")
         .scrollIntoView({ block: "start", behavior: "smooth" });
       imgR.remove();
-      
     }
   }
 }
@@ -112,5 +136,10 @@ $(document).ready(function() {
   $("#takequiz").click(function() {
     $("#quizAll").fadeIn("slow");
     $("#takequiz").fadeOut("slow");
+    $('html, body').animate({
+    scrollTop: ($('#quizBody').first().offset().top)
+},500);
+    
+    
   });
 });
